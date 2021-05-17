@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_4">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Logue-se</h3>
+                        <center><div class="row">
+                            <br>
+                            <center><div class="col-lg-10">
+                                <form action='' method="post">
+                                    <div class="row">
+                                        <div style ="padding-left: 370px;">
+                                            <div class="form-group">
+                                                {{ form.username(class="form-control", placeholder="Digite seu nome de usuário")}}
+                                            </div>
+                                        </div>
+                                        <div style ="padding-left: 370px;">
+                                            <div class="form-group">
+                                                {{ form.password(class="form-control", placeholder="Digite sua senha") }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="button button-contactForm boxed-btn">Logar</button>
+                                    </div>
+                                </form>
+                                {% for i in form %}
+                                    {% if form.errors.i %}
+                                        {{ form.errors.i }}
+                                    {% endif %}
+                                {% endfor %}
+                            </div></center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

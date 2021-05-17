@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- bradcam_area  -->
+    {% if redirect %}
+    <div class="slider_text text-center">
+        <p>Você foi registrado com sucesso em nosso sistema ! Clique no link abaixo para se logar</p>
+        <a href="{{url_for('login')}}" class="boxed-btn3">Logar</a>
+    </div>
+    {% else %}
+    <div class="bradcam_area bradcam_bg_4">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Cadastro</h3>
+                        <p>Preencha o formulário abaixo para se cadastrar em nosso site.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+<!--/ bradcam_area  -->
+
+    <center><div class="row">
+        <div class="col-12">
+            <h2 class="contact-title">Cadastre-se</h2>
+        </div>
+        <br>
+        <br>
+        <br>
+        <center><div class="col-lg-8">
+            <form class="form-contact contact_form" action='' method="post">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            {{ form.name(class="form-control", placeholder="Digite seu nome") }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form.cpf(class="form-control", placeholder="Digite seu CPF") }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form.matricula(class="form-control", placeholder="Digite sua matricula") }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            {{ form.curso(class="form-control", placeholder="Digite seu curso") }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            {{ form.username(class="form-control", placeholder="Digite um nome de usuário")}}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            {{ form.password(class="form-control", placeholder="Digite uma senha") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <button type="submit" class="button button-contactForm boxed-btn">Cadastrar</button>
+                </div>
+            </form>
+            {% for i in form %}
+                {% if form.errors.i %}
+                    {{ form.errors.i }}
+                {% endif %}
+            {% endfor %}
+        </div></center>
+    </div>
+    {% endif %}
+{% endblock %}

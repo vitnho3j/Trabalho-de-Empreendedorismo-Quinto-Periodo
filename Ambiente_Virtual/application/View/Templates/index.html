@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- slider_area_start -->
+    <div class="slider_area">
+        <div class="slider_active owl-carousel">
+            <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-md-12">
+                            {% if current_user.is_authenticated %}
+                            <div class="slider_text text-center">
+                                <h3>Bem vindo</h3>
+                                <br>
+                                <br>
+                                <h3 style="font-size:30px;">{{current_user.nome}}</h3>
+                                <p>Aproveite o nosso sistema, abaixo pode ver as atividades complementares disponíveis para o seu curso</p>
+                                <a href="#" class="boxed-btn3">Perfil</a>
+                                <a href="{{url_for('logout')}}" class="boxed-btn3" style="background:#B22222">Logout</a>
+                            </div>
+                            {% else %}
+                            <div class="slider_text text-center">
+                                <h3>Bem vindo visitante</h3>
+                                <p>Para logar ou registrar-se, clique em um dos links abaixo</p>
+                                <a href="{{url_for('register')}}" class="boxed-btn3">Criar Conta</a>
+                                <a href="{{url_for('login')}}" class="boxed-btn3">Logar</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single_slider  d-flex align-items-center slider_bg_2 overlay">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-md-12">
+                            <div class="slider_text text-center">
+                                <h3 style="font-size:80px;">Atividades Complementares</h3>
+                                <p>Veja as atividades complementares disponíveis para o seu curso</p>
+                                <a href="#" class="boxed-btn3">Atividades Complementares</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single_slider  d-flex align-items-center slider_bg_3 overlay">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-md-12">
+                            <div class="slider_text text-center">
+                                <h3 style="font-size:80px;">Universidade de Vassouras</h3>
+                                <p>Visite o site da nossa Universidade</p>
+                                <a href="https://www.universidadedevassouras.edu.br/" class="boxed-btn3">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="recent_trip_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb_70">
+                        <h3>Recent Trips</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_trip">
+                        <div class="thumb">
+                            <img src="{{url_for('static', filename = 'img/trip/1.png')}}" alt="">
+                        </div>
+                        <div class="info">
+                            <div class="date">
+                                <span>Oct 12, 2019</span>
+                            </div>
+                            <a href="#">
+                                <h3>Journeys Are Best Measured In
+                                    New Friends</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_trip">
+                        <div class="thumb">
+                            <img src="{{url_for('static', filename = 'img/trip/2.png')}}" alt="">
+                        </div>
+                        <div class="info">
+                            <div class="date">
+                                <span>Oct 12, 2019</span>
+                            </div>
+                            <a href="#">
+                                <h3>Journeys Are Best Measured In
+                                    New Friends</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_trip">
+                        <div class="thumb">
+                            <img src="{{url_for('static', filename = 'img/trip/3.png')}}" alt="">
+                        </div>
+                        <div class="info">
+                            <div class="date">
+                                <span>Oct 12, 2019</span>
+                            </div>
+                            <a href="#">
+                                <h3>Journeys Are Best Measured In
+                                    New Friends</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="video_area video_bg overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="video_wrap text-center">
+                        <h3>Enjoy Video</h3>
+                        <div class="video_icon">
+                            <a class="popup-video video_play_button" href="https://www.youtube.com/watch?v=wHhrXey7Kio">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+   
