@@ -14,3 +14,4 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 from application.Controller import default
+from application.Model.entity import aluno_acs

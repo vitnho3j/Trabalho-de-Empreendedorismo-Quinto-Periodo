@@ -1,4 +1,14 @@
-<form action="" method="post">
-    <input type="number" name="matricula">
-    <input type="submit" value="Deletar">
-</form>
+{% if current_user.is_authenticated %}
+    {% if tipo == "Administrador" %} 
+        <form action="" method="post">
+            <input type="number" name="matricula">
+            <input type="submit" value="Deletar">
+        </form>
+    {% else %}
+        <h1> VOCÊ NÃO POSSUI AUTORIZAÇÃO PARA ACESSAR ESTA PÁGINA </h1>
+        <meta http-equiv = "refresh" content = "5; url = {{url_for('index')}}" />
+    {% endif %}
+{% else %}
+    <h1> VOCÊ NÃO POSSUI AUTORIZAÇÃO PARA ACESSAR ESTA PÁGINA </h1>
+    <meta http-equiv = "refresh" content = "5; url = {{url_for('login')}}" />
+{% endif %}

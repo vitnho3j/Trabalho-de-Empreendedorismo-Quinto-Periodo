@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if current_user.is_authenticated %}
+    {% if tipo == "Administrador" %} 
+        <h1> VOCÊ É UM ADMINISTRADOR, PORTANTO, NÃO POSSUI UM PERFIL </h1>
+        <meta http-equiv = "refresh" content = "5; url = {{url_for('index')}}" />  
+    {% else %}   
+    <div class="bradcam_area bradcam_bg_4">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Perfil</h3>
+                        <p>Analise suas informações e estatísticas aqui.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+        <div class="where_togo_area">
+            <div class="container">
+                <div class="form_area">
+                    <center><h3>Suas informações</h3></center>
+                </div>          
+            </div>
+        </div>
+        <!-- where_togo_area_end  -->
+        <div class="popular_places_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="filter_bordered">
+                            <div class="filter_inner">
+                                <div class="row">
+                                    <div class="col-lg-11">
+                                        <div class="single_select">
+                                            <div class="thumb">
+                                                <center><img src="{{url_for('static', filename = 'img/minhas/perfil.jpg')}}" style='height:200px;'></center>
+                                            </div>
+                                            <center><h2>Dados Cadastrais</h2></center>
+                                            <hr style="height:2px;border-width:0;color:gray;background-color:gray;">
+                                            <center><h3 class="destination_details.html">Nome</h3></a></center>
+                                            <center><p><b>{{current_user.nome}}</b></p></center>
+                                            <center><h3 class="destination_details.html">Curso</h3></a></center>
+                                            <center><p><b>{{current_user.curso.nome}}</b></p></center>
+                                            <center><h3 class="destination_details.html">Matrícula</h3></a></center>
+                                            <center><p><b>{{current_user.matricula}}</b></p></center>
+                                            <br>
+                                            <br>
+                                            <center><h2>Dados das atividades</h2></center>
+                                            <hr style="height:2px;border-width:0;color:gray;background-color:gray;">
+                                            <center><h4 class="destination_details.html">Quantidades de atividades feitas</h4></a></center>
+                                            <center><p><b>{{current_user.quantidade_ac}}</b></p></center>
+                                            <center><h4 class="destination_details.html">Horas completadas</h4></a></center>
+                                            <center><p><b>{{current_user.horas_ac}}</b></p></center>
+                                            <center><h4 class="destination_details.html">Horas necessárias para o curso</h4></a></center>
+                                            <center><p><b>{{current_user.curso.carga_ac}}</b></p></center>                          
+                                        
+                                        </div>
+                                    </div>         
+                                </div>
+                            </div>
+                        </div>
+                    </div>              
+                    <div class="col-lg-8" style="overflow-y: scroll; height:750px;">
+                        <center><h3> Histórico de Atividades Complementares</h3></center>
+                        <hr style="height:2px;border-width:0;color:gray;background-color:gray;">
+                        <div class="row">
+                            {% for i in AlunoAtividades.query.filter_by(id_aluno=current_user.matricula) %}
+                            <div class="col-lg-12 col-md-12">
+                                <div class="single_place">
+                                    <div class="place_info">
+                                        <center><h3>Nome: {{Atividade.query.filter_by(id=i.id_ac).first().nome}}</h3></center>
+                                        <br>
+                                        <center><h3>Categoria: {{Atividade.query.filter_by(id=i.id_ac).first().categoria}}</h3></center> 
+                                        <br>        
+                                        <center><div class="">
+                                            <div class="days">
+                                                <i class="fa fa-clock-o"></i>
+                                                <a href="#">Horas contabilizadas: {{Atividade.query.filter_by(id=i.id_ac).first().horas}}</a>
+                                            </div>
+                                            
+                                        </div>
+                                        </center>
+                                        <br>
+                                        <center><p><b>{{i.status}}</b></p></center>
+                                    </div>
+                                </div>
+                                <hr style="height:2px;border-width:0;color:gray;background-color:gray;">
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <img src="{{url_for('plot_png')}}" alt="my plot">              
+                </div>
+            </div>
+        </div>
+    
+    {% endif %}
+{% endif %}
+{% endblock %}

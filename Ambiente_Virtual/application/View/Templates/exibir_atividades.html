@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if current_user.is_authenticated %}
+    {% if tipo == "Administrador" %}
+        <h1> VOCÊ É UM ADMINISTRADOR, PORTANTO, NÃO POSSUI ATIVIDADES PARA SEREM EXIBIDAS </h1>
+        <meta http-equiv = "refresh" content = "5; url = {{url_for('index')}}" />      
+    {% else %}
+        <div class="bradcam_area bradcam_bg_4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="bradcam_text text-center">
+                            <h3>Atividades</h3>
+                            <p>Envie suas atividades para a validação aqui.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <center><div class="row">
+        <div class="col-12">
+            <h2 class="contact-title">Atividades</h2>
+        </div>
+        </div>
+        <br>
+        {% for i in AlunoAtividades.query.filter(AlunoAtividades.id_aluno==current_user.matricula).filter(or_(AlunoAtividades.status=="Não enviada", AlunoAtividades.status=="Em análise")) %}
+        <!--/ bradcam_area  -->
+        
+            <form action="{{url_for('enviar_atividade', id=i.id)}}" method="POST">
+                
+                <hr style="height:2px;border-width:0;color:gray;background-color:gray;">       
+                <h3>{{Atividade.query.filter_by(id=i.id_ac).first().nome}}</h3>
+                <br>
+                <h4>{{Atividade.query.filter_by(id=i.id_ac).first().categoria}}</h3>
+                <br>        
+                    
+                <center> <button type="submit" class="button button-contactForm boxed-btn">Enviar para a validação</button></center>
+                <br>
+
+            </form>
+        </div>
+   
+    {% endfor %}
+    {% endif %}
+{% else %}
+    <meta http-equiv = "refresh" content = "0; url = {{url_for('login')}}" />
+{% endif %}
+{% endblock %}

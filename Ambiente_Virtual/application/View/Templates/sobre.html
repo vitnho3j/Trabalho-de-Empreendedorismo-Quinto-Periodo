@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block content %}
+ 
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_4">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Sobre nós</h3>
+                        <p>Conheça a nossa história.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+    
+    <div class="about_story">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="story_heading">
+                        <h3>Nossa história</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-11 offset-lg-1">
+                            <div class="story_info">
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <p>Nós somos uma companhia feita por um grupo de estudantes de Engenharia de Software da Universidade de Vassouras.</p>
+                                        <p>Pelos estimulos dos trabalhos realizados na nossa faculdade, e também por sermos alunos. Percebemos o quão a entrega e validação de atividades complementares ainda é manual
+                                        mesmo no mundo tecnológico dos dias de hoje, por isso, decidimos criar um sistema para automatizar este processo, além de auxiliar a administração tanto do aluno em suas atividades, quando do administrador na validação das mesmas.</p>
+                                        <p>Assim surgiu a nossa companhia, com o intuito de fornecer uma experiência fácil e agradável para nossos usuários</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <center><h3>Conheça um pouco mais da nossa Universidade</h3></center>
+    <br>
+    <div class="video_area video_bg overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="video_wrap text-center">
+                        <h3>Curta o Vídeo</h3>
+                        <div class="video_icon">
+                            <a class="popup-video video_play_button" href="https://www.youtube.com/watch?v=wHhrXey7Kio">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- testimonial_area  -->
+    <div class="testimonial_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="testmonial_active owl-carousel">
+                        <div class="single_carousel">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="single_testmonial text-center">
+                                        <center><h3>Quem somos ?</h3></center>
+                                        <br>
+                                        <div class="author_thumb">
+                                            <img src="{{url_for('static', filename = 'img/testmonial/Vitor3.jpeg')}}" alt="" style="width: 130px; height: 106px;">
+                                        </div>
+                                        <p>Vitor Daniel.</p>
+                                        <div class="testmonial_author">
+                                            <h3>- Aluno de Engenharia de Software (Quinto Período)</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_carousel">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="single_testmonial text-center">
+                                        <div class="author_thumb">
+                                            <img src="{{url_for('static', filename = 'img/minhas/perfil.jpg')}}" alt="" style="width: 106px; height: 106px;">
+                                        </div>
+                                        <p>Raí Menezes.</p>
+                                        <div class="testmonial_author">
+                                            <h3>- Aluno de Engenharia de Software (Quinto Período)</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_carousel">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="single_testmonial text-center">
+                                        <div class="author_thumb">
+                                            <img src="{{url_for('static', filename = 'img/minhas/perfil.jpg')}}" alt="" style="width: 106px; height: 106px;">
+                                        </div>
+                                        <p>Guilherme Veiga.</p>
+                                        <div class="testmonial_author">
+                                            <h3>- Aluno de Engenharia de Software (Quinto Período)</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_carousel">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="single_testmonial text-center">
+                                        <div class="author_thumb">
+                                            <img src="{{url_for('static', filename = 'img/minhas/perfil.jpg')}}" alt="" style="width: 106px; height: 106px;">
+                                        </div>
+                                        <p>Gabriel Tamiozzo.</p>
+                                        <div class="testmonial_author">
+                                            <h3>- Aluno de Engenharia de Software (Terceiro Período)</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_carousel">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="single_testmonial text-center">
+                                        <div class="author_thumb">
+                                            <img src="{{url_for('static', filename = 'img/minhas/perfil.jpg')}}" alt="" style="width: 106px; height: 106px;">
+                                        </div>
+                                        <p>Weslley Yan.</p>
+                                        <div class="testmonial_author">
+                                            <h3>- Aluno de Engenharia de Software (Terceiro Período)</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_carousel">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="single_testmonial text-center">
+                                        <div class="author_thumb">
+                                            <img src="{{url_for('static', filename = 'img/minhas/perfil.jpg')}}" alt="" style="width: 106px; height: 106px;">
+                                        </div>
+                                        <p>Rodolpho.</p>
+                                        <div class="testmonial_author">
+                                            <h3>- Aluno de Engenharia de Software (Terceiro Período)</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /testimonial_area  -->
+
+{% endblock %}

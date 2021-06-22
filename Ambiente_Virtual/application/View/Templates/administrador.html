@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if current_user.is_authenticated %}
+    {% if tipo == "Administrador" %}
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_4">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Administrador</h3>
+                        <p>Registre um novo administrador por aqui.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+<!--/ bradcam_area  -->
+
+    <center><div class="row">
+        <div class="col-12">
+            <h2 class="contact-title">Administrador</h2>
+        </div>
+        <br>
+        <br>
+        <br>
+        <center><div class="col-lg-0">
+            <form class="form-contact contact_form" action='' method="post">
+                <div class="row">
+                    <div class="col-10" style ="padding-left: 260px;">
+                        <div class="form-group">
+                            <input type="number" name="matricula" placeholder="Digite a matricula">
+                        </div>
+                    </div>
+                    <div class="col-10" style ="padding-left: 260px;">
+                        <div class="form-group">
+                            <input type="text" name="nome" placeholder="Digite o nome">
+                        </div>
+                    </div>
+                    <div class="col-10" style ="padding-left: 260px;">
+                        <div class="form-group">
+                            <input type="text" name="cpf" placeholder="Digite o cpf">
+                        </div>
+                    </div>
+                    <div class="col-10" style ="padding-left: 260px;">
+                        <div class="form-group">
+                            <input type="text" name="username" placeholder="Digite o username">
+                        </div>
+                    </div>
+                    <div class="col-10" style ="padding-left: 260px;">
+                        <div class="form-group">
+                            <input type="password" name="password" placeholder="Digite a sua senha">
+                        </div>
+                    </div>
+                    <div class="col-10" style ="padding-left: 260px;">
+                        <center> <button type="submit" class="button button-contactForm boxed-btn">Cadastrar</button></center>
+                        <br>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% else %}
+        <h1> VOCÊ NÃO POSSUI AUTORIZAÇÃO PARA ACESSAR ESTA PÁGINA </h1>
+        <meta http-equiv = "refresh" content = "5; url = {{url_for('index')}}" />
+        {% endif %}
+{% else %}
+    <h1> VOCÊ NÃO POSSUI AUTORIZAÇÃO PARA ACESSAR ESTA PÁGINA </h1>
+    <meta http-equiv = "refresh" content = "5; url = {{url_for('login')}}" />
+{% endif %}
+{% endblock %}
+
+
+<form action="" method="post">
+    <input type="number" name="matricula" placeholder="Digite a matricula">
+    <input type="text" name="nome" placeholder="Digite o nome">
+    <input type="text" name="cpf" placeholder="Digite o cpf">
+    <input type="text" name="username" placeholder="Digite o username">
+    <input type="text" name="password" placeholder="Digite a sua senha">
+    <input type="submit" value="Registrar">
+</form>

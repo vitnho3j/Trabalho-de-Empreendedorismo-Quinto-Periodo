@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if current_user.is_authenticated %}
+    {% if tipo == "Administrador" %} 
+        <div class="bradcam_area bradcam_bg_4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="bradcam_text text-center">
+                            <h3>Criar Atividades</h3>
+                            <p>Crie novas atividades por aqui.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <!--/ bradcam_area  -->
+
+        <center><div class="row">
+            <div class="col-12">
+                <h2 class="contact-title">Participe</h2>
+            </div>
+        </div>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray;">
+        <br>
+        <br>
+        <br>
+
+        <form action="" method="post" id="formCursos" enctype="multipart/form-data" >
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <center><h3>Escolha um nome para a atividade</h3><input type="text" name="nome"></center>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <center><h3>Quantidade de horas válidas</h3><input type="number" name="horas"></center>
+                        </div>
+                    </div>
+                
+                <div class="col-12" style="text-align: center;">
+                    <div class="form-group">
+                        <h3>Cursos</h3>
+                        {% for curso in Curso.query.order_by(Curso.nome).all() %} 
+                        {{curso.nome}}<h5>Selecionar</h5><input type="checkbox" value="{{curso.nome}}" name="mycheckbox">
+                        <br>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-12">
+                <h5 >Selecione a categoria da atividade</h5>
+                </div>
+                <div style="padding-left: 620px;">
+                <div class="col-12">
+                    <br>
+                    <select type="text" name="categoria" aria-placeholder="TESTEEE" style="align-content: center;">
+                        <option class="col-12">Palestra</option>
+                        <option class="col-12">Semana Acadêmica</option>
+                        <option class="col-12">Seminário</option>
+                        <option class="col-12">Congresso</option>
+                        <option class="col-12">Atividade Cultural</option>
+                        <option class="col-12">Iniciação Científica</option>
+                    </select>
+                </div>
+                </div>
+                </div>
+                <br>
+                <div class="form-group mt-6">
+                    <center> <button type="submit" class="button button-contactForm boxed-btn">Cadastrar</button></center>
+                </div>
+        </form>
+    {% else %}
+    <h1> VOCÊ NÃO POSSUI AUTORIZAÇÃO PARA ACESSAR ESTA PÁGINA </h1>
+    <meta http-equiv = "refresh" content = "5; url = {{url_for('index')}}" />
+    {% endif %}
+{% else %}
+<h1> VOCÊ NÃO POSSUI AUTORIZAÇÃO PARA ACESSAR ESTA PÁGINA </h1>
+<meta http-equiv = "refresh" content = "5; url = {{url_for('login')}}" />
+{% endif %}
+
+{% endblock %}

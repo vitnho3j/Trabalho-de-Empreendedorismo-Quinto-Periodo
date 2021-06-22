@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if current_user.is_authenticated %}
+
+
+        {% if tipo == "Aluno" %}
+        <div class="bradcam_area bradcam_bg_4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="bradcam_text text-center">
+                            <h3>Atividades Disponíveis</h3>
+                            <p>Veja as atividades disponíveis para o seu curso</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <!--/ bradcam_area  -->
+        
+        <center><div class="row">
+            <div class="col-12">
+                <h2 class="contact-title">Participe</h2>
+            </div>
+        </div>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray;">
+        <br>
+        <br>
+        <br>
+            {% for i in CursosDisponiveis.query.filter_by(curso_id=current_user.curso_id) %}
+            {% if AlunoAtividades.query.filter_by(id_ac = i.atividade_id).filter_by(id_aluno = current_user.matricula).first() %}
+            {% else %}
+            <form action="{{url_for('registrar_atividade', id=Atividade.query.filter_by(id=i.atividade_id).first().id)}}" method="post">
+                <h3>{{Atividade.query.filter_by(id=i.atividade_id).first().nome}}</h3>
+                <br>
+                <h5>{{Atividade.query.filter_by(id=i.atividade_id).first().categoria}}</h3>
+                <br>
+                <br>
+                <h4>Diponível para os cursos: </h4>
+                <br>
+                {% for j in CursosDisponiveis.query.filter_by(atividade_id = i.atividade_id) %}
+                <h5>{{Curso.query.filter_by(id=j.curso_id).first().nome}}</h5>
+                {% endfor %}
+                <br>
+                <input type="submit" class="button button-contactForm boxed-btn" value="Participar" id='{{Atividade.query.filter_by(id=i.atividade_id).first().id}}' onclick="toggle();" style="display: block;">
+                <input type="submit" value="Cancelar" id='Atividade.query.filter_by(id=i.atividade_id).first().id' onclick="toggle();" style="display: none;">
+                <br>
+                <hr style="height:2px;border-width:0;color:gray;background-color:gray;">
+                <br>
+            </form>
+            <br>
+            <br>
+            {% endif %}
+            {% endfor %}
+        {% else %}
+        <div class="bradcam_area bradcam_bg_4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="bradcam_text text-center">
+                            <h3>Validação das atividades</h3>
+                            <p>Valide as atividades dos alunos aqui</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <!--/ bradcam_area  -->
+        
+        <center><div class="row">
+            <div class="col-12">
+                <h2 class="contact-title">Atividades</h2>
+            </div>
+        </div>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray;">
+        <br>
+        <br>
+        <br>
+            {% for i in AlunoAtividades.query.filter_by(status="Enviada") %}
+            <form action="{{url_for('validate', id=AlunoAtividades.query.filter_by(id=i.id).first().id)}}" method="post">
+                <h3>Atividade: {{Atividade.query.filter_by(id=i.id_ac).first().nome}}</h3>
+                <h5>Aluno: {{Aluno.query.filter_by(matricula=i.id_aluno).first().nome}}</h3>
+                <h5>Matrícula: {{Aluno.query.filter_by(matricula=i.id_aluno).first().matricula}}</h3>
+                <h5>Curso: {{Aluno.query.filter_by(matricula=i.id_aluno).first().curso.nome}}</h3>
+                <input type="submit" value="Validar" name='acao' class="button button-contactForm boxed-btn">
+                <input type="submit" value="Inválidar" name='acao' class="button button-contactForm boxed-btn">
+                <hr style="height:2px;border-width:0;color:gray;background-color:gray;">
+            </form>
+            {% endfor %}
+        {% endif %}
+{% else %}
+    <meta http-equiv = "refresh" content = "0; url = {{url_for('login')}}" />
+{% endif %}
+
+
+    <script>
+        function toggle() {
+
+            var first = document.getElementById('Atividade.query.filter_by(id=i.atividade_id).first().id')
+            var second = document.getElementById('Atividade.query.filter_by(id=i.atividade_id).first().id')
+
+            if ( first.style.display === "block" ) {
+
+                first.style.display = "none";
+                second.style.display = "block";
+
+        }   else { // switch back
+
+                first.style.display = "block";
+                second.style.display = "none";
+
+            first.onclick = toggle();
+            second.onclick = toggle();
+
+        }   
+
+    }
+    </script>
+    
+{% endblock %}

@@ -13,8 +13,8 @@
                                 <br>
                                 <br>
                                 <h3 style="font-size:30px;">{{current_user.nome}}</h3>
-                                <p>Aproveite o nosso sistema, abaixo pode ver as atividades complementares disponíveis para o seu curso</p>
-                                <a href="#" class="boxed-btn3">Perfil</a>
+                                <p>Aproveite o nosso sistema</p>
+                                <a href="{{url_for('perfil')}}" class="boxed-btn3">Perfil</a>
                                 <a href="{{url_for('logout')}}" class="boxed-btn3" style="background:#B22222">Logout</a>
                             </div>
                             {% else %}
@@ -36,7 +36,7 @@
                             <div class="slider_text text-center">
                                 <h3 style="font-size:80px;">Atividades Complementares</h3>
                                 <p>Veja as atividades complementares disponíveis para o seu curso</p>
-                                <a href="#" class="boxed-btn3">Atividades Complementares</a>
+                                <a href="{{url_for('registrar_atividade')}}" class="boxed-btn3">Atividades Complementares</a>
                             </div>
                         </div>
                     </div>
@@ -47,10 +47,11 @@
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3 style="font-size:80px;">Universidade de Vassouras</h3>
-                                <p>Visite o site da nossa Universidade</p>
+                                <h3 style="font-size:80px;">Nossa Universidade</h3>
+                                <br>
+                                <br>
                                 <a href="https://www.universidadedevassouras.edu.br/" class="boxed-btn3">Acessar</a>
-                            </div>
+                            </div>         
                         </div>
                     </div>
                 </div>
@@ -64,69 +65,38 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="section_title text-center mb_70">
-                        <h3>Recent Trips</h3>
+                        <h3>Atividades Adicionadas recentemente</h3>
                     </div>
                 </div>
             </div>
             <div class="row">
+                {% for i in Atividade.query.order_by(Atividade.id.desc()).limit(3).all() %}
                 <div class="col-lg-4 col-md-6">
                     <div class="single_trip">
                         <div class="thumb">
-                            <img src="{{url_for('static', filename = 'img/trip/1.png')}}" alt="">
+                            <img src="{{url_for('static', filename = 'img/banner/act2.jpg')}}" alt="">
                         </div>
                         <div class="info">
                             <div class="date">
-                                <span>Oct 12, 2019</span>
+                                <span>{{ i.categoria }}</span>
                             </div>
                             <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
+                                <h3>{{ i.nome }}</h3>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="{{url_for('static', filename = 'img/trip/2.png')}}" alt="">
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="{{url_for('static', filename = 'img/trip/3.png')}}" alt="">
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 
-    <div class="video_area video_bg overlay">
+    <div class="video_area video_bg overlay" style="background-image: url_for('static', filename = 'img/instagram/4.png');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="video_wrap text-center">
-                        <h3>Enjoy Video</h3>
+                        <h3>Curta o Vídeo</h3>
                         <div class="video_icon">
                             <a class="popup-video video_play_button" href="https://www.youtube.com/watch?v=wHhrXey7Kio">
                                 <i class="fa fa-play"></i>
@@ -138,5 +108,3 @@
         </div>
     </div>
 {% endblock %}
-
-   
